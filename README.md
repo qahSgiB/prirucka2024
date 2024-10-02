@@ -3,4 +3,6 @@
 ## Ucastnici
 
 1. Petr Zikan
-2. Amin Nakhle
+2. Filip Holoubek
+3. Jan Hermann
+4. Amin Nakhle
