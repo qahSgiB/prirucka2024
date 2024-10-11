@@ -1,8 +1,6 @@
 # Basic Site Settings
 title: "Ultimátní příručka mladého budovatele v Pythonu"
 description: "A comprehensive lecture series on Python and GPTs, featuring hands-on examples and in-depth explanations."
-baseurl: ""  # Leave empty if deploying to GitHub Pages root (e.g., https://petrzikan.github.io/)
-url: "https://petrzikan.github.io/prirucka2024"
 
 # Theme Configuration
 theme: minima  # A clean, simple theme with easy readability
