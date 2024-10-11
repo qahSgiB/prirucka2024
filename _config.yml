@@ -10,22 +10,8 @@ theme: minima  # A clean, simple theme with easy readability
 # Markdown Configuration
 markdown: kramdown
 
-# Permalink Structure
-permalink: /:title/
-paginate: 5  # Number of posts per page
-
 # Customization for Better Readability
 minima:
   skin: classic  # Minima offers a few skins; "classic" has a clean look.
   social_links:
     github: https://github.com/petrzikan/prirucka2024
-
-# Jekyll Table of Contents (TOC) Plugin Settings
-toc:
-  min_level: 2
-  max_level: 3
-  no_toc_section_class: "no-toc"
-
-# Additional Configuration
-future: true  # Build posts with future dates
-lsi: false  # Disable Latent Semantic Indexing (useful if you don’t have a huge amount of content)
