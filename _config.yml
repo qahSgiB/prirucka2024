@@ -7,9 +7,6 @@ url: "https://petrzikan.github.io/prirucka2024"
 # Theme Configuration
 theme: minima  # A clean, simple theme with easy readability
 plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
   - jekyll-paginate
   - jekyll-toc
 
@@ -25,21 +22,12 @@ minima:
   skin: classic  # Minima offers a few skins; "classic" has a clean look.
   social_links:
     github: https://github.com/petrzikan/prirucka2024
-    linkedin: https://linkedin.com/in/your-profile
-    twitter: https://twitter.com/your-profile
 
 # Jekyll Table of Contents (TOC) Plugin Settings
 toc:
   min_level: 2
   max_level: 3
   no_toc_section_class: "no-toc"
-
-# SEO Settings
-jekyll-seo-tag:
-  title: "Ultimátní příručka mladého budovatele v Pythonu"
-  description: "Master Python and GPTs with our in-depth lecture series, covering code examples, concepts, and more."
-  social:
-    twitter: petrzikan  # Replace with your Twitter handle if applicable
 
 # Additional Configuration
 future: true  # Build posts with future dates
