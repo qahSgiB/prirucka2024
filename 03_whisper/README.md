@@ -26,34 +26,34 @@ Ok, so let's explore step number 1 first. Can you provide us with a detailed pro
 **AI:**  
 Here's the detailed procedure for installing all the necessary dependencies, including `whisper`, on an Ubuntu 22.04 system with Python 3.10:
 1. **Update System Packages**: Run  
-   {{BASH_BLOCK}}  
+   ```  
    sudo apt update && sudo apt upgrade -y  
-   {{BASH_BLOCK}}
+   ```
 2. **Install Python 3.10 and pip**: Run  
-   {{BASH_BLOCK}}  
+   ```  
    sudo apt install python3.10 python3-pip -y  
-   {{BASH_BLOCK}}  
+   ```  
    and verify with  
-   {{BASH_BLOCK}}  
+   ```  
    python3.10 --version  
-   {{BASH_BLOCK}}
+   ```
 3. **Install `ffmpeg`**: Run  
-   {{BASH_BLOCK}}  
+   ```  
    sudo apt install ffmpeg -y  
-   {{BASH_BLOCK}}
+   ```
 4. **Set Up a Virtual Environment (Optional)**: Run  
-   {{BASH_BLOCK}}  
+   ```  
    python3.10 -m venv whisper_env  
    source whisper_env/bin/activate  
-   {{BASH_BLOCK}}
+   ```
 5. **Install Whisper Library**: Run  
-   {{BASH_BLOCK}}  
+   ```  
    pip install git+https://github.com/openai/whisper.git  
-   {{BASH_BLOCK}}
+   ```
 6. **Verify Installation**: Run  
-   {{BASH_BLOCK}}  
+   ```  
    python -c "import whisper; print('Whisper installed successfully')"  
-   {{BASH_BLOCK}}
+   ```
 
 **Human:**  
 Let's proceed with the step 2.
@@ -61,13 +61,13 @@ Let's proceed with the step 2.
 **AI:**  
 To extract audio from an MP4 video using `ffmpeg`, follow this:
 1. **Extract Audio**: Use  
-   {{BASH_BLOCK}}  
+   ```  
    ffmpeg -i input_video.mp4 -vn -acodec pcm_s16le -ar 16000 -ac 1 output_audio.wav  
-   {{BASH_BLOCK}}
+   ```
 2. **Verify the Extracted Audio**: Use  
-   {{BASH_BLOCK}}  
+   ```  
    ffplay output_audio.wav  
-   {{BASH_BLOCK}}  
+   ```  
    to ensure the audio is extracted correctly.
 
 **Human:**  
@@ -76,7 +76,7 @@ Step 3, please!
 **AI:**  
 To use Whisper to transcribe the audio:
 1. **Create the Python Script**:  
-   {{CODE_BLOCK}}  
+   ```  
    import whisper
 
    model = whisper.load_model("base")
@@ -84,25 +84,25 @@ To use Whisper to transcribe the audio:
    result = model.transcribe(audio_path, language='cs')
    print("Transcription:")
    print(result["text"])
-   {{CODE_BLOCK}}
+   ```
 2. **Run the Script**: Save it as `transcribe.py` and run  
-   {{BASH_BLOCK}}  
+   ```  
    python3 transcribe.py  
-   {{BASH_BLOCK}}
+   ```
 3. **Save Output**: Modify the script to save the output:  
-   {{CODE_BLOCK}}  
+   ```  
    with open("transcription.txt", "w", encoding="utf-8") as f:
        f.write(result["text"])
-   {{CODE_BLOCK}}
+   ```
 
 **Human:**  
 Can you provide me with `ffmpeg` command that would extract only first 60 seconds of the `output_audio.wav`?
 
 **AI:**  
 Use the following command:  
-{{BASH_BLOCK}}  
+```  
 ffmpeg -i output_audio.wav -t 60 -c copy output_audio_60s.wav  
-{{BASH_BLOCK}}  
+```  
 This extracts the first 60 seconds from `output_audio.wav` and saves it as `output_audio_60s.wav`.
 
 **Human:**  
