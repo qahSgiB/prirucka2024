@@ -6,9 +6,6 @@ url: "https://petrzikan.github.io/prirucka2024"
 
 # Theme Configuration
 theme: minima  # A clean, simple theme with easy readability
-plugins:
-  - jekyll-paginate
-  - jekyll-toc
 
 # Markdown Configuration
 markdown: kramdown
