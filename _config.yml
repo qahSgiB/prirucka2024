@@ -1,1 +1,46 @@
-theme: jekyll-theme-minimal
+# Basic Site Settings
+title: "Ultimátní příručka mladého budovatele v Pythonu"
+description: "A comprehensive lecture series on Python and GPTs, featuring hands-on examples and in-depth explanations."
+baseurl: ""  # Leave empty if deploying to GitHub Pages root (e.g., https://petrzikan.github.io/)
+url: "https://petrzikan.github.io/prirucka2024"
+
+# Theme Configuration
+theme: minima  # A clean, simple theme with easy readability
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-toc
+
+# Markdown Configuration
+markdown: kramdown
+
+# Permalink Structure
+permalink: /:title/
+paginate: 5  # Number of posts per page
+
+# Customization for Better Readability
+minima:
+  skin: classic  # Minima offers a few skins; "classic" has a clean look.
+  social_links:
+    github: https://github.com/petrzikan/prirucka2024
+    linkedin: https://linkedin.com/in/your-profile
+    twitter: https://twitter.com/your-profile
+
+# Jekyll Table of Contents (TOC) Plugin Settings
+toc:
+  min_level: 2
+  max_level: 3
+  no_toc_section_class: "no-toc"
+
+# SEO Settings
+jekyll-seo-tag:
+  title: "Ultimátní příručka mladého budovatele v Pythonu"
+  description: "Master Python and GPTs with our in-depth lecture series, covering code examples, concepts, and more."
+  social:
+    twitter: petrzikan  # Replace with your Twitter handle if applicable
+
+# Additional Configuration
+future: true  # Build posts with future dates
+lsi: false  # Disable Latent Semantic Indexing (useful if you don’t have a huge amount of content)
