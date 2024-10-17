@@ -6,3 +6,4 @@
 2. Filip Holoubek
 3. Jan Hermann
 4. Martin Kolar
+5. Marianna Dafcikova
