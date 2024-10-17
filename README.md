@@ -8,3 +8,4 @@
 4. Martin Kolar
 5. Marianna Dafcikova
 6. Samuel Strečko
+7. Vaclav Chmelar
