@@ -10,3 +10,4 @@
 6. Samuel Strečko
 7. Vaclav Chmelar
 8. Kryštof Mrózek
+9. Petr Skopal
