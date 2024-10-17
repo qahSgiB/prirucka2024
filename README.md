@@ -18,3 +18,4 @@
 14. Kristina Tomankova
 15. Jakub Lexmaul
 16. Amin Nakhle
+17. Branislav Modriansky
