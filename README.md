@@ -15,3 +15,4 @@
 11. Samuel Fabo
 12. Amalie Maryasova
 13. Tomas Sumsala
+14. Kristina Tomankova
