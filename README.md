@@ -9,3 +9,4 @@
 5. Marianna Dafcikova
 6. Samuel Strečko
 7. Vaclav Chmelar
+8. Kryštof Mrózek
