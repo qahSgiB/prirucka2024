@@ -12,3 +12,4 @@
 8. Kryštof Mrózek
 9. Petr Skopal
 10. Adriana Zacharova
+11. Samuel Fabo
