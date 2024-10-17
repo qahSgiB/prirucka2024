@@ -16,3 +16,4 @@
 12. Amalie Maryasova
 13. Tomas Sumsala
 14. Kristina Tomankova
+15. Jakub Lexmaul
