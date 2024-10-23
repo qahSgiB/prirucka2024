@@ -1,4 +1,7 @@
-# prirucka2024
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [Ucastnici](#ucastnici)
+- [Lekce 03: Whisper](#lekce-03-whisper)
 
 ## Ucastnici
 
@@ -19,3 +22,6 @@
 15. Jakub Lexmaul
 16. Amin Nakhle
 17. Branislav Modriansky
+
+## Lekce 03: Whisper
+{% include_relative 03_whisper/README.md %}

@@ -1,0 +1,15 @@
+# Basic Site Settings
+title: "Ultimátní příručka mladého budovatele v Pythonu"
+description: "A comprehensive lecture series on Python and GPTs, featuring hands-on examples and in-depth explanations."
+
+# Theme Configuration
+theme: minima  # A clean, simple theme with easy readability
+
+# Markdown Configuration
+markdown: kramdown
+
+# Customization for Better Readability
+minima:
+  skin: classic  # Minima offers a few skins; "classic" has a clean look.
+  social_links:
+    github: https://github.com/petrzikan/prirucka2024
