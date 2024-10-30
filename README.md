@@ -27,3 +27,5 @@ hahahahahaha
 
 ## Lekce 03: Whisper
 {% include_relative 03_whisper/README.md %}
+
+## Lekce 04: Open AI client
