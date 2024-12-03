@@ -31,9 +31,15 @@ def download_url(url, output_file):
 @click.option(
     "--interactive", is_flag=True, help="Enable interactive mode for rejecting splits."
 )
-def split_html_on_headers(file_path, output_pkl, output_txt, interactive):
+@click.option("--target-tag", default=None, help="Target tag for splitting.")
+@click.option("--target-class", default=None, help="Target class for splitting.")
+def split_html_on_headers(
+    file_path, output_pkl, output_txt, interactive, target_tag, target_class
+):
     """Split HTML file on headers and save results."""
-    split_html_func(file_path, output_pkl, output_txt, interactive)
+    split_html_func(
+        file_path, output_pkl, output_txt, interactive, target_tag, target_class
+    )
 
 
 if __name__ == "__main__":

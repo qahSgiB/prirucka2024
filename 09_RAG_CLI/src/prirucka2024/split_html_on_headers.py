@@ -17,8 +17,43 @@ HEADERS_TO_SPLIT_ON = [
 
 html_splitter = HTMLHeaderTextSplitter(HEADERS_TO_SPLIT_ON)
 
+from bs4 import BeautifulSoup
 
-def split_html(file_path, output_pkl, output_txt, interactive):
+
+def preprocess_html(html_string, target_tag=None, target_class=None):
+    """
+    Preprocess HTML content by optionally focusing on a specific tag and class.
+
+    Args:
+        html_string (str): The raw HTML content.
+        target_tag (str): The HTML tag to target (e.g., "div").
+        target_class (str): The class of the target tag (e.g., "theme-doc-markdown markdown").
+
+    Returns:
+        str: Processed HTML content within the specified tag and class.
+    """
+    soup = BeautifulSoup(html_string, "html.parser")
+
+    # If target_tag and target_class are specified, focus only on that section
+    if target_tag and target_class:
+        logger.info(f"Filtering content within <{target_tag} class='{target_class}'>")
+        section = soup.find(target_tag, class_=target_class)
+        if section:
+            return str(section)
+        else:
+            logger.warning(
+                f"No matching <{target_tag} class='{target_class}'> found in the HTML."
+            )
+            return ""  # Return an empty string if the tag is not found
+
+    # Default preprocessing if no target is specified
+    logger.info("No specific target specified; processing full HTML content.")
+    return html_string
+
+
+def split_html(
+    file_path, output_pkl, output_txt, interactive, target_tag=None, target_class=None
+):
     """
     Split HTML file on headers and save results.
 
@@ -27,14 +62,20 @@ def split_html(file_path, output_pkl, output_txt, interactive):
         output_pkl (str): Name of the pickle file for serialized splits.
         output_txt (str): Name of the text file for saving split contents.
         interactive (bool): Enable interactive mode for rejecting splits.
+        target_tag (str): The HTML tag to target (e.g., "div").
+        target_class (str): The class of the target tag (e.g., "theme-doc-markdown markdown").
     """
     try:
         # Read HTML file
         with open(file_path, "r", encoding="utf-8") as f:
             html_string = f.read()
 
+        # Preprocess HTML content
+        preprocessed_html = preprocess_html(html_string, target_tag, target_class)
+
+        # Use the preprocessed HTML for splitting
         all_html_header_splits = []
-        html_header_splits = html_splitter.split_text(html_string)
+        html_header_splits = html_splitter.split_text(preprocessed_html)
 
         for split in html_header_splits:
             if interactive:
