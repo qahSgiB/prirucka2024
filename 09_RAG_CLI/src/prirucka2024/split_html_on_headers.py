@@ -52,7 +52,13 @@ def preprocess_html(html_string, target_tag=None, target_class=None):
 
 
 def split_html(
-    file_path, output_pkl, output_txt, interactive, target_tag=None, target_class=None
+    file_path,
+    output_pkl,
+    output_txt,
+    interactive,
+    target_tag=None,
+    target_class=None,
+    drop_empty_metadata=True,
 ):
     """
     Split HTML file on headers and save results.
@@ -64,6 +70,7 @@ def split_html(
         interactive (bool): Enable interactive mode for rejecting splits.
         target_tag (str): The HTML tag to target (e.g., "div").
         target_class (str): The class of the target tag (e.g., "theme-doc-markdown markdown").
+        drop_empty_metadata (bool): Whether to drop splits with empty metadata.
     """
     try:
         # Read HTML file
@@ -73,11 +80,23 @@ def split_html(
         # Preprocess HTML content
         preprocessed_html = preprocess_html(html_string, target_tag, target_class)
 
+        if not preprocessed_html.strip():
+            logger.warning("Preprocessed HTML is empty. No splits generated.")
+            with open(output_pkl, "wb") as f:
+                pickle.dump([], f)
+            with open(output_txt, "w", encoding="utf-8") as f:
+                f.write("")
+            return
+
         # Use the preprocessed HTML for splitting
         all_html_header_splits = []
         html_header_splits = html_splitter.split_text(preprocessed_html)
 
         for split in html_header_splits:
+            if drop_empty_metadata and not split.metadata:
+                logger.info(f"Dropping split with empty metadata: {split.page_content}")
+                continue
+
             if interactive:
                 os.system("cls" if os.name == "nt" else "clear")  # Clear the screen
                 print("=====")
