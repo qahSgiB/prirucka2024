@@ -2,3 +2,4 @@
 91_rst/
 09_RAG_CLI/dist/
 __pycache__
+chroma_db/
