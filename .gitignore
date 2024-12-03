@@ -1,2 +1,4 @@
 .vscode/
 91_rst/
+09_RAG_CLI/dist/
+__pycache__
