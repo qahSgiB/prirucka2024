@@ -1,6 +1,7 @@
 import click
 
 from prirucka2024.download_url import download_url as download_url_func
+from prirucka2024.rag import prompt, retrieve
 from prirucka2024.split_html_on_headers import split_html as split_html_func
 from prirucka2024.fill_vector_store import fill_vector_store as fill_vector_store_func
 
@@ -55,6 +56,54 @@ def fill_vector_store(pickle_file, chroma_db_dir, embedding_model):
     Load serialized documents and populate a Chroma vector store.
     """
     fill_vector_store_func(pickle_file, chroma_db_dir, embedding_model)
+
+
+@main.command()
+@click.argument("question")
+@click.option(
+    "--chroma-db-dir",
+    required=True,
+    help="Path to the Chroma database directory.",
+)
+@click.option(
+    "--k",
+    default=5,
+    help="Number of top documents to retrieve (default: 5).",
+)
+@click.option(
+    "--embedding-model",
+    default="text-embedding-ada-002",
+    help="OpenAI embedding model to use for retrieval.",
+)
+@click.option(
+    "--llm-model",
+    default="gpt-4o-mini",
+    help="LLM model to use for generating the response.",
+)
+def rag(question, chroma_db_dir, k, embedding_model, llm_model):
+    """
+    Retrieve documents from Chroma and generate a response using LLM.
+    """
+    # Retrieve documents
+    docs = retrieve(
+        chroma_db_dir=chroma_db_dir,
+        question=question,
+        k=k,
+        embedding_model=embedding_model,
+    )
+
+    # Generate response
+    response = prompt(docs=docs, question=question, llm_model=llm_model)
+
+    # Print results
+    click.echo("Retrieved Documents:")
+    for doc in docs:
+        click.echo(f"Metadata: {doc.metadata}")
+        click.echo(f"Content: {doc.page_content}")
+        click.echo("=" * 40)
+
+    click.echo("Generated Response:")
+    click.echo(response)
 
 
 if __name__ == "__main__":
