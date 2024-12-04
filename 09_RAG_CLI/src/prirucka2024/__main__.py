@@ -109,6 +109,7 @@ def rag(question, chroma_db_dir, k, embedding_model, llm_model):
     click.echo(response)
 
 
+@main.command()
 @click.argument("infile")
 @click.argument("outfile")
 def parse_pdf_raw(infile, outfile):
